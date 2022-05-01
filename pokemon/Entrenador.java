@@ -88,7 +88,7 @@ public class Entrenador {
         }
     }
     public void entreFuncional(Pokemon pokemon){
-        dinero = dinero - 20 * pokemon.nivel; 
+        dinero = dinero - 40 * pokemon.nivel; 
         for(int i = 0; i < equipo.length; i++){
             if(equipo[i] == pokemon){
                 pokemon.defensa = pokemon.defensa + 5;
@@ -102,7 +102,7 @@ public class Entrenador {
         }
     }
     public void entreOnirico(Pokemon pokemon){
-        dinero = dinero - 20 * pokemon.nivel; 
+        dinero = dinero - 40 * pokemon.nivel; 
         for(int i = 0; i < equipo.length; i++){
             if(equipo[i] == pokemon){
                 pokemon.velocidad = pokemon.velocidad + 5;
