@@ -5,12 +5,14 @@ import java.util.ArrayList;
 public class Pokemon {
     protected String nombre;
     protected String mote;
+    protected int vitalidadMax;
     protected int vitalidad;
     protected int ataque;
     protected int defensa;
     protected int ataqueEspecial;
     protected int defensaEspecial;
     protected int velocidad;
+    protected int estaminaMax;
     protected int estamina;
     protected int nivel = 0;
     protected int fertilidad = 5;
@@ -20,19 +22,21 @@ public class Pokemon {
     protected ArrayList<Movimiento> movimientos = new ArrayList<>(4);
     protected int contadorMovimientos;
 
-    Pokemon(String nombreParam, String moteParam, int vitalidadParam, int ataqueParam,
+    Pokemon(String nombreParam, String moteParam, int vitalidadMaxParam, int ataqueParam,
             int defensaParam, int ataqueEspecialParam, int defensaEspecialParam,
-            int velocidadParam, int estaminaParam,
+            int velocidadParam, int estaminaMaxParam,
             EnumTipos tipoParam) {
         this.nombre = nombreParam;
         this.mote = moteParam;
-        this.vitalidad = vitalidadParam;
+        this.vitalidadMax = vitalidadMaxParam;
+        this.vitalidad = vitalidadMaxParam;
         this.ataque = ataqueParam;
         this.defensa = defensaParam;
         this.ataqueEspecial = ataqueEspecialParam;
         this.defensaEspecial = defensaEspecialParam;
         this.velocidad = velocidadParam;
-        this.estamina = estaminaParam;
+        this.estaminaMax = estaminaMaxParam;
+        this.estamina = estaminaMaxParam;
         this.tipo = tipoParam;
     }
 
@@ -164,7 +168,7 @@ public class Pokemon {
         this.contadorMovimientos = contadorMovimientos;
     }
 
-    public void aprenderMOvimiento(Movimiento movimientoAprender) {
+    public void aprenderMovimiento(Movimiento movimientoAprender) {
 
         movimientos.add(movimientoAprender);
     }
@@ -172,6 +176,7 @@ public class Pokemon {
     public void remplazarMovimiento(Movimiento movimientoOlvidar, Movimiento movimientoAprender) {
 
         for (int i = 0; i < 3; i++) {
+
             if (movimientos.get(i) == movimientoOlvidar) {
 
                 movimientos.remove(i);
@@ -258,7 +263,7 @@ public class Pokemon {
         return comparacion;
     }
 
-    public int atacar(Movimiento movimientoAtaque, Pokemon pokemon) {
+    public int atacar(MovimientoAtaque movimientoAtaque, Pokemon pokemon) {
 
         int potenciaTotal = 0;
         EnumTabla comparacion = EnumTabla.NEUTRO;
@@ -305,4 +310,10 @@ public class Pokemon {
         }
 
     }
+
+    public void descansar() {
+
+        estamina = estaminaMax;
+    }
+
 }

@@ -1,0 +1,45 @@
+package pokemon;
+
+public class MovimientoEstado extends Movimiento {
+
+    private EnumEstados estadoMovimiento;
+    private int turnos;
+
+    MovimientoEstado(int costeEstaminaParam, EnumEstados estadoMovimientoParam,
+            int turnosParam) {
+        super();
+
+        this.estadoMovimiento = estadoMovimientoParam;
+        this.turnos = turnosParam;
+        setCosteEstamina(turnos * 10);
+    }
+
+    public EnumEstados getEstadoMovimiento() {
+        return estadoMovimiento;
+    }
+
+    public int getTurnos() {
+        return turnos;
+    }
+
+    @Override
+    public int getCosteEstamina() {
+        // TODO Auto-generated method stub
+        return super.getCosteEstamina();
+    }
+
+    @Override
+    public void setCosteEstamina(int costeEstamina) {
+        // TODO Auto-generated method stub
+        super.setCosteEstamina(costeEstamina);
+    }
+
+    public void setEstadoMovimiento(EnumEstados estadoMovimiento) {
+        this.estadoMovimiento = estadoMovimiento;
+    }
+
+    public void setTurnos(int turnos) {
+        this.turnos = turnos;
+    }
+
+}
