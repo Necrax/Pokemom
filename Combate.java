@@ -28,7 +28,6 @@ public class Combate {
 
     public void comprobarEstado() {
         
-        if()
     }
     public Entrenador getEntrenador1() {
         return entrenador1;
