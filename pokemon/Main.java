@@ -21,16 +21,10 @@ public class Main {
                 MovimientoMejora movimiento3 = new MovimientoMejora(10,
                                 EnumCarac.ATAQUE, 10, "t");
 
-                System.out.println(pokemon1);
+                
                 System.out.println(pokemon2);
-
                 pokemon1.atacar(movimiento, pokemon2);
-                pokemon2.atacar(movimiento2, pokemon2);
-                pokemon1.atacar(movimiento3, pokemon1);
-                entrenador.entreFurioso(pokemon1);
-
-                System.out.println(pokemon1);
                 System.out.println(pokemon2);
+        
         }
-
 }
