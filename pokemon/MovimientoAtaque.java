@@ -17,25 +17,21 @@ public class MovimientoAtaque extends Movimiento {
 
     @Override
     public String getNombre() {
-        // TODO Auto-generated method stub
         return super.getNombre();
     }
 
     @Override
     public void setNombre(String nombre) {
-        // TODO Auto-generated method stub
         super.setNombre(nombre);
     }
 
     @Override
     public EnumMovimiento getTipoMovimiento() {
-        // TODO Auto-generated method stub
         return super.getTipoMovimiento();
     }
 
     @Override
     public void setTipoMovimiento(EnumMovimiento tipoMovimiento) {
-        // TODO Auto-generated method stub
         super.setTipoMovimiento(tipoMovimiento);
     }
 
@@ -57,25 +53,21 @@ public class MovimientoAtaque extends Movimiento {
 
     @Override
     public int getCosteEstamina() {
-        // TODO Auto-generated method stub
         return super.getCosteEstamina();
     }
 
     @Override
     public void setCosteEstamina(int costeEstamina) {
-        // TODO Auto-generated method stub
         super.setCosteEstamina(costeEstamina);
     }
 
     @Override
     public EnumTabla comparar(EnumTipos tipo1, EnumTipos tipo2) {
-        // TODO Auto-generated method stub
         return super.comparar(tipo1, tipo2);
     }
 
     @Override
     public void usarMovimiento(Pokemon pokemon1, Pokemon pokemon2) {
-        // TODO Auto-generated method stub
         int potenciaTotal = 0;
         EnumTabla comparacion = EnumTabla.NEUTRO;
 
