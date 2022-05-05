@@ -5,7 +5,7 @@ import java.util.Random;
 public class Entrenador {
     private String nombre;
     private Pokemon[] equipo = new Pokemon[4];
-    private ArrayList<Pokemon> caja;
+    private ArrayList<Pokemon> caja = new ArrayList<Pokemon>();
     private int dinero;
 
     Random r = new Random();
@@ -50,6 +50,7 @@ public class Entrenador {
                     if(equipo[j] == null){
                         equipo[j] = pokemon;
                         System.out.println("El pokemon se añadio al equipo");
+                        break;
                     }
                     else{
                         System.out.println("No tienes espacio en el equipo");
@@ -68,6 +69,7 @@ public class Entrenador {
                 pokemon.defensa = pokemon.defensa + 5;
                 pokemon.defensaEspecial = pokemon.defensaEspecial + 5;
                 pokemon.vitalidad = pokemon.vitalidad + 5;
+                break;
             }
             else if(equipo[i] != pokemon){
                 System.out.println("No tienes ese pokemon en su equipo");
@@ -81,6 +83,7 @@ public class Entrenador {
                 pokemon.ataque = pokemon.ataque + 5;
                 pokemon.ataqueEspecial = pokemon.ataqueEspecial + 5;
                 pokemon.velocidad = pokemon.velocidad + 5;
+                break;
             }
             else if(equipo[i] != pokemon){
                 System.out.println("No tienes ese pokemon en su equipo");
@@ -95,6 +98,7 @@ public class Entrenador {
                 pokemon.ataque = pokemon.defensaEspecial + 5;
                 pokemon.velocidad = pokemon.velocidad + 5;
                 pokemon.vitalidad = pokemon.vitalidad + 5;
+                break;
             }
             else if(equipo[i] != pokemon){
                 System.out.println("No tienes ese pokemon en su equipo");
@@ -109,10 +113,22 @@ public class Entrenador {
                 pokemon.defensaEspecial = pokemon.defensaEspecial + 5;
                 pokemon.vitalidad = pokemon.vitalidad+ 5;
                 pokemon.ataqueEspecial = pokemon.ataqueEspecial +5;
+                break;
             }
             else if(equipo[i] != pokemon){
                 System.out.println("No tienes ese pokemon en su equipo");
             }
+        }
+    }
+    public void mostrarEquipo(){
+        for(int i = 0; i < equipo.length; i++){
+            if(equipo[i] != null)
+                System.out.println(equipo[i].nombre);
+        }
+    }
+    public void mostrarCaja(){
+        for(int i = 0; i < caja.size(); i++){
+            System.out.println(caja.get(i).nombre);
         }
     }
 }
