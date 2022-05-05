@@ -23,13 +23,11 @@ public class MovimientoEstado extends Movimiento {
 
     @Override
     public int getCosteEstamina() {
-        // TODO Auto-generated method stub
         return super.getCosteEstamina();
     }
 
     @Override
     public void setCosteEstamina(int costeEstamina) {
-        // TODO Auto-generated method stub
         super.setCosteEstamina(costeEstamina);
     }
 
@@ -43,7 +41,6 @@ public class MovimientoEstado extends Movimiento {
 
     @Override
     public void usarMovimiento(Pokemon pokemon1, Pokemon pokemon2) {
-        // TODO Auto-generated method stub
 
         pokemon2.setEstado(estadoMovimiento);
     }

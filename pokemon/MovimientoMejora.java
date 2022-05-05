@@ -19,13 +19,11 @@ public class MovimientoMejora extends Movimiento {
 
     @Override
     public int getCosteEstamina() {
-        // TODO Auto-generated method stub
         return super.getCosteEstamina();
     }
 
     @Override
     public void setCosteEstamina(int costeEstamina) {
-        // TODO Auto-generated method stub
         super.setCosteEstamina(costeEstamina);
     }
 
