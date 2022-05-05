@@ -4,12 +4,15 @@ public class Combate {
 
     private int turnos;
     private Entrenador entrenador1;
-    private Entrenador entrenado2;
+    private Entrenador entrenador2;
     private int entrenador1KO;
     private int entrenador2KO;
     private Entrenador ganador;
 
     Combate(Entrenador entrandor1param, Entrenador entrenador2param) {
+
+        this.entrenador1 = entrandor1param;
+        this.entrenador2 = entrenador2param;
 
     }
 
@@ -22,7 +25,7 @@ public class Combate {
 
         else if (entrenador2KO == 4) {
 
-            ganador = entrenado2;
+            ganador = entrenador2;
         }
     }
 
@@ -31,7 +34,7 @@ public class Combate {
     }
 
     public Entrenador getEntrenado2() {
-        return entrenado2;
+        return entrenador2;
     }
 
     public void setEntrenador1(Entrenador entrenador1) {
@@ -39,7 +42,7 @@ public class Combate {
     }
 
     public void setEntrenado2(Entrenador entrenado2) {
-        this.entrenado2 = entrenado2;
+        this.entrenador2 = entrenado2;
     }
 
     public int getEntrenador1KO() {
@@ -74,4 +77,9 @@ public class Combate {
         this.turnos = turnos;
     }
 
+    public void retirada() {
+
+        ganador = this.entrenador2;
+        entrenador2.setDinero(entrenador2.getDinero() + (entrenador1.getDinero() / 3));
+    }
 }
