@@ -19,7 +19,7 @@ public class Pokemon {
     protected EnumTipos tipo;
     protected EnumEstados estado = EnumEstados.SIN_ESTADO;
     protected int experiencia = 0;
-    protected ArrayList<Movimiento> movimientos = new ArrayList<>(4);
+    protected ArrayList<Movimiento> movimientos = new ArrayList<Movimiento>(4);
     protected int contadorMovimientos;
 
     Pokemon(String nombreParam, String moteParam, int vitalidadMaxParam, int ataqueParam,
@@ -186,113 +186,15 @@ public class Pokemon {
 
     }
 
-    public EnumTabla comparar(EnumTipos tipo1, EnumTipos tipo2) {
-        EnumTabla comparacion = EnumTabla.NEUTRO;
+    public Movimiento elegirMovimiento(int i) {
 
-        if (tipo1 == tipo2) {
-
-            comparacion = EnumTabla.NEUTRO;
-        }
-
-        else if (tipo1 == EnumTipos.AGUA && tipo2 == EnumTipos.FUEGO) {
-
-            comparacion = EnumTabla.VENTAJA;
-
-        }
-
-        else if (tipo1 == EnumTipos.FUEGO && tipo2 == EnumTipos.AGUA) {
-
-            comparacion = EnumTabla.DESVENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.FUEGO && tipo2 == EnumTipos.PLANTA) {
-
-            comparacion = EnumTabla.VENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.PLANTA && tipo2 == EnumTipos.FUEGO) {
-
-            comparacion = EnumTabla.DESVENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.AGUA && tipo2 == EnumTipos.PLANTA) {
-
-            comparacion = EnumTabla.DESVENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.PLANTA && tipo2 == EnumTipos.AGUA) {
-
-            comparacion = EnumTabla.VENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.ELECTRICO && tipo2 == EnumTipos.AGUA) {
-
-            comparacion = EnumTabla.VENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.AGUA && tipo2 == EnumTipos.ELECTRICO) {
-
-            comparacion = EnumTabla.DESVENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.VOLADOR && tipo2 == EnumTipos.PLANTA) {
-
-            comparacion = EnumTabla.VENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.PLANTA && tipo2 == EnumTipos.VOLADOR) {
-
-            comparacion = EnumTabla.DESVENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.VOLADOR && tipo2 == EnumTipos.ELECTRICO) {
-
-            comparacion = EnumTabla.DESVENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.ELECTRICO && tipo2 == EnumTipos.VOLADOR) {
-
-            comparacion = EnumTabla.VENTAJA;
-        }
-
-        else {
-
-            comparacion = EnumTabla.NEUTRO;
-        }
-
-        return comparacion;
+        return movimientos.get(i);
     }
 
-    public int atacar(MovimientoAtaque movimientoAtaque, Pokemon pokemon) {
+    public void atacar(Movimiento movimiento, Pokemon pokemon) {
 
-        int potenciaTotal = 0;
-        EnumTabla comparacion = EnumTabla.NEUTRO;
+        movimiento.usarMovimiento(this, pokemon);
 
-        if (movimientoAtaque.getElementoMovimiento() == tipo) {
-
-            potenciaTotal = (int) (ataque * 1.5 * movimientoAtaque.getPotencia() - pokemon.getDefensa());
-        }
-
-        else if (movimientoAtaque.getElementoMovimiento() != tipo) {
-
-            potenciaTotal = ataque * movimientoAtaque.getPotencia() - pokemon.getDefensa();
-        }
-
-        comparacion = comparar(movimientoAtaque.getElementoMovimiento(), pokemon.getTipo());
-
-        if (comparacion == EnumTabla.VENTAJA) {
-
-            potenciaTotal = potenciaTotal * 2;
-        }
-
-        else if (comparacion == EnumTabla.DESVENTAJA) {
-
-            potenciaTotal = (int) (ataque * 0.5 * movimientoAtaque.getPotencia() - pokemon.getDefensa());
-        }
-
-        setEstamina(estamina - movimientoAtaque.getCosteEstamina());
-
-        return potenciaTotal;
     }
 
     public void subirNivel() {

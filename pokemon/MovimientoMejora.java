@@ -53,4 +53,47 @@ public class MovimientoMejora extends Movimiento {
         this.turnos = turnos;
     }
 
+    @Override
+    public void usarMovimiento(Pokemon pokemon1, Pokemon pokemon2) {
+
+        EnumCarac carac = mejora;
+
+        if (carac == EnumCarac.ATAQUE) {
+
+            pokemon1.setAtaque(cantidadMejora + pokemon1.getAtaque());
+        }
+
+        else if (carac == EnumCarac.ATAQUEX) {
+
+            pokemon1.setAtaqueEspecial(cantidadMejora + pokemon1.getAtaqueEspecial());
+        }
+
+        else if (carac == EnumCarac.DEFENSA) {
+
+            pokemon1.setDefensa(cantidadMejora + pokemon1.getDefensa());
+        }
+
+        else if (carac == EnumCarac.DEFENSAX) {
+
+            pokemon1.setDefensaEspecial(cantidadMejora + pokemon1.getDefensaEspecial());
+        }
+
+        else if (carac == EnumCarac.ESTAMINA) {
+
+            pokemon1.setEstamina(cantidadMejora + pokemon1.getEstamina());
+
+        }
+
+        else if (carac == EnumCarac.VELOCIDAD) {
+
+            pokemon1.setVelocidad((cantidadMejora + pokemon1.getVelocidad()));
+        }
+
+        else {
+
+            pokemon1.setVitalidad(cantidadMejora + pokemon1.getVitalidad());
+        }
+
+    }
+
 }

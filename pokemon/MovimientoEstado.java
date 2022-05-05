@@ -42,4 +42,11 @@ public class MovimientoEstado extends Movimiento {
         this.turnos = turnos;
     }
 
+    @Override
+    public void usarMovimiento(Pokemon pokemon1, Pokemon pokemon2) {
+        // TODO Auto-generated method stub
+
+        pokemon2.setEstado(estadoMovimiento);
+    }
+
 }

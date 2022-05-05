@@ -43,4 +43,43 @@ public class MovimientoAtaque extends Movimiento {
         super.setCosteEstamina(costeEstamina);
     }
 
+    @Override
+    public EnumTabla comparar(EnumTipos tipo1, EnumTipos tipo2) {
+        // TODO Auto-generated method stub
+        return super.comparar(tipo1, tipo2);
+    }
+
+    @Override
+    public void usarMovimiento(Pokemon pokemon1, Pokemon pokemon2) {
+        // TODO Auto-generated method stub
+        int potenciaTotal = 0;
+        EnumTabla comparacion = EnumTabla.NEUTRO;
+
+        if (elementoMovimiento == pokemon1.getTipo()) {
+
+            potenciaTotal = (int) (pokemon1.getAtaque() * 1.5 * potencia - pokemon2.getDefensa());
+        }
+
+        else if (elementoMovimiento != pokemon1.getTipo()) {
+
+            potenciaTotal = pokemon1.getAtaque() * potencia - pokemon2.getDefensa();
+        }
+
+        comparacion = comparar(elementoMovimiento, pokemon1.getTipo());
+
+        if (comparacion == EnumTabla.VENTAJA) {
+
+            potenciaTotal = potenciaTotal * 2;
+        }
+
+        else if (comparacion == EnumTabla.DESVENTAJA) {
+
+            potenciaTotal = (int) (pokemon1.getAtaque() * 0.5 * potencia - pokemon2.getDefensa());
+        }
+
+        pokemon1.setEstamina(pokemon1.getEstamina() - this.getCosteEstamina());
+
+        pokemon2.setVitalidad(pokemon2.getVitalidad() - potenciaTotal);
+    }
+
 }
