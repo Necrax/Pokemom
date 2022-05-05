@@ -27,6 +27,7 @@ public class Main {
                 pokemon1.atacar(movimiento, pokemon2);
                 pokemon2.atacar(movimiento2, pokemon2);
                 pokemon1.atacar(movimiento3, pokemon1);
+                entrenador.entreFurioso(pokemon1);
 
                 System.out.println(pokemon1);
                 System.out.println(pokemon2);
