@@ -305,4 +305,10 @@ public class Pokemon {
         }
 
     }
+    @Override
+    public String toString() {
+        return "Nombre: " + this.nombre + "\n" + "Mote: " + this.mote + "\n" + "Nivel: " + this.nivel + "\n" + "Vitalidad: " + this.vitalidad + "\n" + "Ataque: " + 
+        this.ataque + "\n" + "Defensa: " + this.defensa + "\n" + "AtaqueSp: " + this.ataqueEspecial + "\n" + "DefensaSp: " + this.defensaEspecial + "\n" + "Velocidad: "
+        + this.velocidad + "\n" + "Tipo1: " + this.tipo;
+    }
 }
