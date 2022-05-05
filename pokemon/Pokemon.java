@@ -236,9 +236,7 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return "Nombre:" + nombre + "\nVitalidad:" + vitalidad + "\nEstamina: " + estamina + "\nTipo: " + tipo +
                 "\nEstado: " + estado + "\nAtaque: " + ataque;
     }
-
 }

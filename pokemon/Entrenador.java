@@ -103,6 +103,8 @@ public class Entrenador {
 
                 pokemon.setVitalidad(pokemon.getVitalidad() + 5);
 
+                break;
+
             } else if (equipo[i] != pokemon) {
 
                 System.out.println("No tienes ese pokemon en su equipo");
@@ -123,6 +125,8 @@ public class Entrenador {
                 pokemon.setAtaqueEspecial(pokemon.getAtaqueEspecial() + 5);
 
                 pokemon.setVelocidad(pokemon.getVelocidad() + 5);
+
+                break;
 
             } else if (equipo[i] != pokemon) {
 
@@ -147,6 +151,8 @@ public class Entrenador {
 
                 pokemon.setVitalidad(pokemon.getVitalidad() + 5);
 
+                break;
+
             } else if (equipo[i] != pokemon) {
 
                 System.out.println("No tienes ese pokemon en su equipo");
@@ -170,9 +176,14 @@ public class Entrenador {
                 
                 pokemon.setAtaqueEspecial(pokemon.getAtaqueEspecial() + 5);
 
-            } else if (equipo[i] != pokemon) {
+                break;
+
+            } else if (i == 4 && equipo[i] != pokemon) {
 
                 System.out.println("No tienes ese pokemon en su equipo");
+            }
+            else{
+                
             }
         }
     }

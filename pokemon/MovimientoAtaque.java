@@ -72,25 +72,41 @@ public class MovimientoAtaque extends Movimiento {
         EnumTabla comparacion = EnumTabla.NEUTRO;
 
         if (elementoMovimiento == pokemon1.getTipo()) {
+            
+            if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.VENTAJA){
 
-            potenciaTotal = (int) (pokemon1.getAtaque() * 1.5 * potencia - pokemon2.getDefensa());
+                potenciaTotal = (int) 0.01 * (int) 1.5 * (int) 1.5 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * this.potencia / 25 * pokemon2.getDefensa());
+            }
+
+            else if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.DESVENTAJA){
+
+                potenciaTotal = (int) 0.01 * (int) 1.5 * (int) 0.75 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * this.potencia / 25 * pokemon2.getDefensa());
+            }
+
+            else if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.NEUTRO){
+
+                potenciaTotal = (int) 0.01 * (int) 1.5 * (int) 1 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * this.potencia / 25 * pokemon2.getDefensa());
+            }
+
         }
 
         else if (elementoMovimiento != pokemon1.getTipo()) {
 
-            potenciaTotal = pokemon1.getAtaque() * potencia - pokemon2.getDefensa();
-        }
+            if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.VENTAJA){
 
-        comparacion = comparar(elementoMovimiento, pokemon1.getTipo());
+                potenciaTotal = (int) 0.01 * (int) 1 * (int) 1.5 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * this.potencia / 25 * pokemon2.getDefensa());
+            }
 
-        if (comparacion == EnumTabla.VENTAJA) {
+            else if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.DESVENTAJA){
 
-            potenciaTotal = potenciaTotal * 2;
-        }
+                potenciaTotal = (int) 0.01 * (int) 1 * (int) 0.75 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * this.potencia / 25 * pokemon2.getDefensa());
+            }
 
-        else if (comparacion == EnumTabla.DESVENTAJA) {
+            else if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.NEUTRO){
 
-            potenciaTotal = (int) (pokemon1.getAtaque() * 0.5 * potencia - pokemon2.getDefensa());
+                potenciaTotal = (int) 0.01 * (int) 1 * (int) 1 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * this.potencia / 25 * pokemon2.getDefensa());
+            }
+
         }
 
         pokemon1.setEstamina(pokemon1.getEstamina() - this.getCosteEstamina());
