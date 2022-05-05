@@ -4,8 +4,15 @@ public abstract class Movimiento {
 
     private EnumMovimiento tipoMovimiento;
     private int costeEstamina;
+    private String nombre;
 
-    Movimiento() {
+    Movimiento(String nombreParam) {
+
+        this.nombre = nombreParam;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public int getCosteEstamina() {
@@ -22,6 +29,10 @@ public abstract class Movimiento {
 
     public void setTipoMovimiento(EnumMovimiento tipoMovimiento) {
         this.tipoMovimiento = tipoMovimiento;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public abstract void usarMovimiento(Pokemon pokemon1, Pokemon pokemon2);

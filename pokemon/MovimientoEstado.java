@@ -5,9 +5,8 @@ public class MovimientoEstado extends Movimiento {
     private EnumEstados estadoMovimiento;
     private int turnos;
 
-    MovimientoEstado(int costeEstaminaParam, EnumEstados estadoMovimientoParam,
-            int turnosParam) {
-        super();
+    MovimientoEstado(String nombreParam, EnumEstados estadoMovimientoParam, int turnosParam) {
+        super(nombreParam);
 
         this.estadoMovimiento = estadoMovimientoParam;
         this.turnos = turnosParam;

@@ -5,14 +5,38 @@ public class MovimientoAtaque extends Movimiento {
     private int potencia;
     private EnumTipos elementoMovimiento;
 
-    MovimientoAtaque(int potenciaParam, EnumTipos elementoMovimientoParam) {
-        super();
+    MovimientoAtaque(int potenciaParam, EnumTipos elementoMovimientoParam, String nombreParam) {
+        super(nombreParam);
 
         this.elementoMovimiento = elementoMovimientoParam;
         this.potencia = potenciaParam;
 
         setCosteEstamina(potencia / 2);
 
+    }
+
+    @Override
+    public String getNombre() {
+        // TODO Auto-generated method stub
+        return super.getNombre();
+    }
+
+    @Override
+    public void setNombre(String nombre) {
+        // TODO Auto-generated method stub
+        super.setNombre(nombre);
+    }
+
+    @Override
+    public EnumMovimiento getTipoMovimiento() {
+        // TODO Auto-generated method stub
+        return super.getTipoMovimiento();
+    }
+
+    @Override
+    public void setTipoMovimiento(EnumMovimiento tipoMovimiento) {
+        // TODO Auto-generated method stub
+        super.setTipoMovimiento(tipoMovimiento);
     }
 
     public int getPotencia() {

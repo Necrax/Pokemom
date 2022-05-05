@@ -1,13 +1,20 @@
-import pokemon.Entrenador;
+package pokemon;
+
+import java.util.ArrayList;
 
 public class Combate {
 
-    private int turnos;
+    private int numeroTurno = 1;
     private Entrenador entrenador1;
     private Entrenador entrenador2;
     private int entrenador1KO;
     private int entrenador2KO;
     private Entrenador ganador;
+    private Movimiento movimientoEntrenador1;
+    private Movimiento movimientoEntrenador2;
+    private ArrayList<Turno> turnos = new ArrayList<Turno>();
+    private Pokemon pokemon1;
+    private Pokemon pokemon2;
 
     Combate(Entrenador entrandor1param, Entrenador entrenador2param) {
 
@@ -49,6 +56,14 @@ public class Combate {
         return entrenador1KO;
     }
 
+    public ArrayList<Turno> getTurnos() {
+        return turnos;
+    }
+
+    public Entrenador getEntrenador2() {
+        return entrenador2;
+    }
+
     public void setEntrenador1KO(int entrenador1ko) {
         entrenador1KO = entrenador1ko;
     }
@@ -69,17 +84,36 @@ public class Combate {
         this.ganador = ganador;
     }
 
-    public int getTurnos() {
-        return turnos;
+    public int getTurno() {
+        return numeroTurno;
     }
 
-    public void setTurnos(int turnos) {
+    public void setEntrenador2(Entrenador entrenador2) {
+        this.entrenador2 = entrenador2;
+    }
+
+    public void setTurnos(ArrayList<Turno> turnos) {
         this.turnos = turnos;
+    }
+
+    public void setTurno(int turno) {
+        this.numeroTurno = turno;
     }
 
     public void retirada() {
 
         ganador = this.entrenador2;
         entrenador2.setDinero(entrenador2.getDinero() + (entrenador1.getDinero() / 3));
+    }
+
+    public void guardarTurno() {
+
+        Turno turno = new Turno(numeroTurno, movimientoEntrenador1, movimientoEntrenador2);
+        turnos.add(turno);
+    }
+
+    public void ganarExperiencia() {
+
+        pokemon1.setExperiencia(pokemon1.getExperiencia() + ((pokemon1.getNivel() + (pokemon2.getNivel() * 10)) / 4));
     }
 }

@@ -3,24 +3,24 @@ package pokemon;
 import java.util.ArrayList;
 
 public class Pokemon {
-    protected String nombre;
-    protected String mote;
-    protected int vitalidadMax;
-    protected int vitalidad;
-    protected int ataque;
-    protected int defensa;
-    protected int ataqueEspecial;
-    protected int defensaEspecial;
-    protected int velocidad;
-    protected int estaminaMax;
-    protected int estamina;
-    protected int nivel = 0;
-    protected int fertilidad = 5;
-    protected EnumTipos tipo;
-    protected EnumEstados estado = EnumEstados.SIN_ESTADO;
-    protected int experiencia = 0;
-    protected ArrayList<Movimiento> movimientos = new ArrayList<Movimiento>(4);
-    protected int contadorMovimientos;
+    private String nombre;
+    private String mote;
+    private int vitalidadMax;
+    private int vitalidad;
+    private int ataque;
+    private int defensa;
+    private int ataqueEspecial;
+    private int defensaEspecial;
+    private int velocidad;
+    private int estaminaMax;
+    private int estamina;
+    private int nivel = 0;
+    private int fertilidad = 5;
+    private EnumTipos tipo;
+    private EnumEstados estado = EnumEstados.SIN_ESTADO;
+    private int experiencia = 0;
+    private ArrayList<Movimiento> movimientos = new ArrayList<Movimiento>(4);
+    private int contadorMovimientos;
 
     Pokemon(String nombreParam, String moteParam, int vitalidadMaxParam, int ataqueParam,
             int defensaParam, int ataqueEspecialParam, int defensaEspecialParam,
@@ -102,6 +102,22 @@ public class Pokemon {
 
     public int getContadorMovimientos() {
         return contadorMovimientos;
+    }
+
+    public int getEstaminaMax() {
+        return estaminaMax;
+    }
+
+    public int getVitalidadMax() {
+        return vitalidadMax;
+    }
+
+    public void setEstaminaMax(int estaminaMax) {
+        this.estaminaMax = estaminaMax;
+    }
+
+    public void setVitalidadMax(int vitalidadMax) {
+        this.vitalidadMax = vitalidadMax;
     }
 
     public void setNombre(String nombre) {
@@ -216,6 +232,13 @@ public class Pokemon {
     public void descansar() {
 
         estamina = estaminaMax;
+    }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "Nombre:" + nombre + "\nVitalidad:" + vitalidad + "\nEstamina: " + estamina + "\nTipo: " + tipo +
+                "\nEstado: " + estado + "\nAtaque: " + ataque;
     }
 
 }

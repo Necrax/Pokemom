@@ -6,9 +6,9 @@ public class MovimientoMejora extends Movimiento {
     private int turnos;
     private int cantidadMejora;
 
-    MovimientoMejora(int costeEstaminaParam, int turnosParam,
-            EnumCarac mejoraParam, int cantidadMejoraParam) {
-        super();
+    MovimientoMejora(int turnosParam,
+            EnumCarac mejoraParam, int cantidadMejoraParam, String nombreParam) {
+        super(nombreParam);
 
         this.cantidadMejora = cantidadMejoraParam;
         this.mejora = mejoraParam;
