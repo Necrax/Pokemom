@@ -163,8 +163,11 @@ public class Entrenador {
             if (equipo[i] == pokemon) {
 
                 pokemon.setVelocidad(pokemon.getVelocidad() + 5);
+
                 pokemon.setDefensaEspecial(pokemon.getDefensaEspecial() + 5);
+
                 pokemon.setVitalidad(pokemon.getVitalidad() + 5);
+                
                 pokemon.setAtaqueEspecial(pokemon.getAtaqueEspecial() + 5);
 
             } else if (equipo[i] != pokemon) {
