@@ -19,12 +19,15 @@ public class Entrenador {
     public String getNombre() {
         return nombre;
     }
+    
     public Pokemon[] getEquipo() {
         return equipo;
     }
+
     public ArrayList<Pokemon> getCaja() {
         return caja;
     }
+
     public int getDinero() {
         return dinero;
     }
@@ -42,6 +45,7 @@ public class Entrenador {
             }
         }
     }
+
     public void moverAEquipo(Pokemon pokemon){
         for(int i = 0; i < caja.size(); i++){
             if(caja.get(i) == pokemon){
@@ -62,6 +66,7 @@ public class Entrenador {
             }
         }
     }
+
     public void entrePesado(Pokemon pokemon){
         dinero = dinero - 20 * pokemon.nivel; 
         for(int i = 0; i < equipo.length; i++){
@@ -76,6 +81,7 @@ public class Entrenador {
             }
         }
     }
+
     public void entreFurioso(Pokemon pokemon){
         dinero = dinero - 30 * pokemon.nivel; 
         for(int i = 0; i < equipo.length; i++){
@@ -90,6 +96,7 @@ public class Entrenador {
             }
         }
     }
+
     public void entreFuncional(Pokemon pokemon){
         dinero = dinero - 40 * pokemon.nivel; 
         for(int i = 0; i < equipo.length; i++){
@@ -105,6 +112,7 @@ public class Entrenador {
             }
         }
     }
+
     public void entreOnirico(Pokemon pokemon){
         dinero = dinero - 40 * pokemon.nivel; 
         for(int i = 0; i < equipo.length; i++){
@@ -120,12 +128,14 @@ public class Entrenador {
             }
         }
     }
+
     public void mostrarEquipo(){
         for(int i = 0; i < equipo.length; i++){
             if(equipo[i] != null)
                 System.out.println(equipo[i].nombre);
         }
     }
+
     public void mostrarCaja(){
         for(int i = 0; i < caja.size(); i++){
             System.out.println(caja.get(i).nombre);
