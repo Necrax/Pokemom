@@ -21,8 +21,10 @@ public class Main {
                 MovimientoMejora movimiento3 = new MovimientoMejora(10,
                                 EnumCarac.ATAQUE, 10, "t");
 
-
-                                entrenador.entreOnirico(pokemon1);
+                
+                System.out.println(pokemon2);
+                pokemon1.atacar(movimiento, pokemon2);
+                System.out.println(pokemon2);
+        
         }
-
 }
