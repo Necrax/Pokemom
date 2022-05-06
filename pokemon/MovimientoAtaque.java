@@ -113,5 +113,5 @@ public class MovimientoAtaque extends Movimiento {
 
         pokemon2.setVitalidad(pokemon2.getVitalidad() - potenciaTotal);
     }
-
+    
 }
