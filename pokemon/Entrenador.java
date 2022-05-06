@@ -9,6 +9,7 @@ public class Entrenador {
     private ArrayList<Pokemon> caja = new ArrayList<Pokemon>();
     private int dinero;
     private int numeroPokeBalls = 4;
+    private int contadorEquipo;
 
     Random r = new Random();
 
@@ -43,6 +44,14 @@ public class Entrenador {
         return dinero;
     }
 
+    public int getContadorEquipo() {
+        return contadorEquipo;
+    }
+
+    public void setContadorEquipo(int contadorEquipo) {
+        this.contadorEquipo = contadorEquipo;
+    }
+
     public void moverACaja(Pokemon pokemon) {
 
         for (int i = 0; i < equipo.length; i++) {
@@ -53,39 +62,20 @@ public class Entrenador {
 
                 equipo[i] = null;
 
-                System.out.println("El pokemon se ha movido correctamente");
-                break;
-
-            } else if (equipo[i] != pokemon) {
-
-                System.out.println("No tienes ese pokemon en su equipo");
             }
         }
+
     }
 
     public void moverAEquipo(Pokemon pokemon) {
 
-        for (int i = 0; i < caja.size(); i++) {
+        if (contadorEquipo < 4) {
 
-            if (caja.get(i) == pokemon) {
+            caja.remove(pokemon);
 
-                caja.remove(pokemon);
+            equipo[4] = pokemon;
 
-                for (int j = 0; j < equipo.length; j++) {
-
-                    if (equipo[j] == null) {
-
-                        equipo[j] = pokemon;
-
-                        System.out.println("El pokemon se añadio al equipo");
-                    } else {
-
-                        System.out.println("No tienes espacio en el equipo");
-                    }
-                }
-            } else {
-                System.out.println("No tienes ese pokemon en la caja");
-            }
+            contadorEquipo++;
         }
     }
 
@@ -93,85 +83,49 @@ public class Entrenador {
 
         dinero = dinero - 20 * pokemon.getNivel();
 
-        for (int i = 0; i < equipo.length; i++) {
+        pokemon.setDefensa(pokemon.getDefensa() + 5);
 
-            if (equipo[i] == pokemon) {
+        pokemon.setDefensaEspecial(pokemon.getDefensaEspecial() + 5);
 
-                pokemon.setDefensa(pokemon.getDefensa() + 5);
+        pokemon.setVitalidad(pokemon.getVitalidad() + 5);
 
-                pokemon.setDefensaEspecial(pokemon.getDefensaEspecial() + 5);
-
-                pokemon.setVitalidad(pokemon.getVitalidad() + 5);
-
-            } else if (equipo[i] != pokemon) {
-
-                System.out.println("No tienes ese pokemon en su equipo");
-            }
-        }
     }
 
     public void entreFurioso(Pokemon pokemon) {
 
         dinero = dinero - 30 * pokemon.getNivel();
 
-        for (int i = 0; i < equipo.length; i++) {
+        pokemon.setAtaque(pokemon.getAtaque() + 5);
 
-            if (equipo[i] == pokemon) {
+        pokemon.setAtaqueEspecial(pokemon.getAtaqueEspecial() + 5);
 
-                pokemon.setAtaque(pokemon.getAtaque() + 5);
+        pokemon.setVelocidad(pokemon.getVelocidad() + 5);
 
-                pokemon.setAtaqueEspecial(pokemon.getAtaqueEspecial() + 5);
-
-                pokemon.setVelocidad(pokemon.getVelocidad() + 5);
-
-            } else if (equipo[i] != pokemon) {
-
-                System.out.println("No tienes ese pokemon en su equipo");
-            }
-        }
     }
 
     public void entreFuncional(Pokemon pokemon) {
 
         dinero = dinero - 40 * pokemon.getNivel();
 
-        for (int i = 0; i < equipo.length; i++) {
+        pokemon.setDefensa(pokemon.getDefensa() + 5);
 
-            if (equipo[i] == pokemon) {
+        pokemon.setAtaque(pokemon.getDefensaEspecial() + 5);
 
-                pokemon.setDefensa(pokemon.getDefensa() + 5);
+        pokemon.setVelocidad(pokemon.getVelocidad() + 5);
 
-                pokemon.setAtaque(pokemon.getDefensaEspecial() + 5);
+        pokemon.setVitalidad(pokemon.getVitalidad() + 5);
 
-                pokemon.setVelocidad(pokemon.getVelocidad() + 5);
-
-                pokemon.setVitalidad(pokemon.getVitalidad() + 5);
-
-            } else if (equipo[i] != pokemon) {
-
-                System.out.println("No tienes ese pokemon en su equipo");
-            }
-        }
     }
 
     public void entreOnirico(Pokemon pokemon) {
 
         dinero = dinero - 40 * pokemon.getNivel();
 
-        for (int i = 0; i < equipo.length; i++) {
+        pokemon.setVelocidad(pokemon.getVelocidad() + 5);
+        pokemon.setDefensaEspecial(pokemon.getDefensaEspecial() + 5);
+        pokemon.setVitalidad(pokemon.getVitalidad() + 5);
+        pokemon.setAtaqueEspecial(pokemon.getAtaqueEspecial() + 5);
 
-            if (equipo[i] == pokemon) {
-
-                pokemon.setVelocidad(pokemon.getVelocidad() + 5);
-                pokemon.setDefensaEspecial(pokemon.getDefensaEspecial() + 5);
-                pokemon.setVitalidad(pokemon.getVitalidad() + 5);
-                pokemon.setAtaqueEspecial(pokemon.getAtaqueEspecial() + 5);
-
-            } else if (equipo[i] != pokemon) {
-
-                System.out.println("No tienes ese pokemon en su equipo");
-            }
-        }
     }
 
     public void setNumeroPokeBalls(int numeroPokeBalls) {
@@ -194,15 +148,27 @@ public class Entrenador {
         this.nombre = nombre;
     }
 
+    public void añadirPokemon(Pokemon pokemon) {
+
+        for (int i = 0; i < 4; i++) {
+
+            if (equipo[i] == null) {
+
+                equipo[i] = pokemon;
+            }
+        }
+
+    }
+
     public void capturar() {
 
         boolean captura = false;
+        Pokemon pokemon; // TODO bBDD.get(e)
+        int i;
 
-        while (numeroPokeBalls > 0 && captura == false) {
+        while (captura == false) {
 
-            Pokemon pokemon; // TODO bBDD.get(e)
-
-            int i = (int) Math.random() * 3;
+            i = (int) Math.random() * 3;
 
             if (i < 3) {
 

@@ -10,7 +10,9 @@ public class Main {
                                 50, 80, 10, 5,
                                 8, EnumTipos.AGUA);
 
-                Entrenador entrenador = new Entrenador("kdkkdkd", pokemon2);
+                Entrenador entrenador = new Entrenador("kdkkdkd", pokemon1);
+
+                entrenador.añadirPokemon(pokemon1);
 
                 MovimientoAtaque movimiento = new MovimientoAtaque(10,
                                 EnumTipos.FUEGO, "h");
@@ -21,6 +23,8 @@ public class Main {
                 MovimientoMejora movimiento3 = new MovimientoMejora(10,
                                 EnumCarac.ATAQUE, 10, "t");
 
+                Combate combate = new Combate(entrenador);
+
                 System.out.println(pokemon1);
                 System.out.println(pokemon2);
 
@@ -29,8 +33,12 @@ public class Main {
                 pokemon1.atacar(movimiento3, pokemon1);
                 entrenador.entreFurioso(pokemon1);
 
+                combate.guardarTurno(1, movimiento, movimiento2, pokemon1, pokemon2);
+
                 System.out.println(pokemon1);
                 System.out.println(pokemon2);
+                System.out.println(combate.mostrarTurno(1));
+
         }
 
 }

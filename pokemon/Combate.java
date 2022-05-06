@@ -16,11 +16,62 @@ public class Combate {
     private Pokemon pokemon1;
     private Pokemon pokemon2;
 
-    Combate(Entrenador entrandor1param, Entrenador entrenador2param) {
+    Combate(Entrenador entrandor1param) {
 
         this.entrenador1 = entrandor1param;
-        this.entrenador2 = entrenador2param;
+        // TODOthis.entrenador2 = arrayEntrenadores(random);
 
+        // for (int i = 0; i <= 3; i++) {
+
+        // pokemon2 = bssddpokemon(random)
+
+        // for (int e = 1; e <= entrenador1.getEquipo()[0].getNivel(); e++) {
+
+        // pokemon2.subirNivel();
+
+        // this.entrenador2.añadirPokemon(pokemon2);
+        // }
+        // }
+    }
+
+    public Movimiento getMovimientoEntrenador1() {
+        return movimientoEntrenador1;
+    }
+
+    public Movimiento getMovimientoEntrenador2() {
+        return movimientoEntrenador2;
+    }
+
+    public int getNumeroTurno() {
+        return numeroTurno;
+    }
+
+    public Pokemon getPokemon1() {
+        return pokemon1;
+    }
+
+    public Pokemon getPokemon2() {
+        return pokemon2;
+    }
+
+    public void setMovimientoEntrenador1(Movimiento movimientoEntrenador1) {
+        this.movimientoEntrenador1 = movimientoEntrenador1;
+    }
+
+    public void setMovimientoEntrenador2(Movimiento movimientoEntrenador2) {
+        this.movimientoEntrenador2 = movimientoEntrenador2;
+    }
+
+    public void setNumeroTurno(int numeroTurno) {
+        this.numeroTurno = numeroTurno;
+    }
+
+    public void setPokemon1(Pokemon pokemon1) {
+        this.pokemon1 = pokemon1;
+    }
+
+    public void setPokemon2(Pokemon pokemon2) {
+        this.pokemon2 = pokemon2;
     }
 
     public void compararKO() {
@@ -102,18 +153,28 @@ public class Combate {
 
     public void retirada() {
 
-        ganador = this.entrenador2;
-        entrenador2.setDinero(entrenador2.getDinero() + (entrenador1.getDinero() / 3));
+        ganador = this.entrenador2;// TODO MODIFICAR DINERO ENTRENADOR 1
+
+        entrenador1.setDinero(entrenador1.getDinero() - (entrenador1.getDinero() / 3));
     }
 
-    public void guardarTurno() {
+    public void guardarTurno(int numeroTurno, Movimiento movimientoEntrenador1, Movimiento movimientoEntrenador2,
+            Pokemon pokemon1, Pokemon pokemon2) {
 
-        Turno turno = new Turno(numeroTurno, movimientoEntrenador1, movimientoEntrenador2);
+        Turno turno = new Turno(numeroTurno, movimientoEntrenador1, movimientoEntrenador2, pokemon1, pokemon2);
         turnos.add(turno);
     }
 
     public void ganarExperiencia() {
 
         pokemon1.setExperiencia(pokemon1.getExperiencia() + ((pokemon1.getNivel() + (pokemon2.getNivel() * 10)) / 4));
+    }
+
+    public String mostrarTurno(int turno) {
+
+        turno--;
+
+        return turnos.get(turno).getTurnoEscrito();
+
     }
 }
