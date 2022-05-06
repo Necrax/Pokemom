@@ -14,7 +14,7 @@ public class Pokemon {
     private int velocidad;
     private int estaminaMax;
     private int estamina;
-    private int nivel = 0;
+    private int nivel = 1;
     private int fertilidad = 5;
     private EnumTipos tipo;
     private EnumEstados estado = EnumEstados.SIN_ESTADO;
@@ -219,9 +219,12 @@ public class Pokemon {
         return movimientos.get(i);
     }
 
-    public void atacar(Movimiento movimiento, Pokemon pokemon) {
+    public void atacar(Movimiento movimiento, Pokemon pokemonRival) {
 
-        movimiento.usarMovimiento(this, pokemon);
+        if (estamina > movimiento.getCosteEstamina()) {
+
+            movimiento.usarMovimiento(this, pokemonRival);
+        }
 
     }
 

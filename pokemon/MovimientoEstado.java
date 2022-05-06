@@ -40,10 +40,22 @@ public class MovimientoEstado extends Movimiento {
     }
 
     @Override
-    public void usarMovimiento(Pokemon pokemon1, Pokemon pokemon2) {
+    public String getNombre() {
+        // TODO Auto-generated method stub
+        return super.getNombre();
+    }
 
-        pokemon2.setEstado(estadoMovimiento);
-        pokemon2.setEstamina(pokemon1.getEstamina() - this.getCosteEstamina());
+    @Override
+    public EnumMovimiento getTipoMovimiento() {
+        // TODO Auto-generated method stub
+        return super.getTipoMovimiento();
+    }
+
+    @Override
+    public void usarMovimiento(Pokemon pokemon1, Pokemon pokemonRival) {
+
+        pokemonRival.setEstado(this.estadoMovimiento);
+        pokemon1.setEstamina(pokemon1.getEstamina() - this.getCosteEstamina());
     }
 
 }

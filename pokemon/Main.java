@@ -5,10 +5,10 @@ public class Main {
 
         Pokemon pokemon = new Pokemon("u", "e", 100,
                 20, 30, 20, 10,
-                5, 50, EnumTipos.FUEGO);
+                5, 100, EnumTipos.FUEGO);
 
         Pokemon pokemon2 = new Pokemon("e", "p", 200, 10, 20,
-                50, 50, 10, 50, EnumTipos.AGUA);
+                50, 50, 10, 100, EnumTipos.AGUA);
 
         Entrenador entrenador = new Entrenador("j", pokemon);
 
@@ -21,9 +21,8 @@ public class Main {
         System.out.println(pokemon2);
 
         pokemon.atacar(movimientoAtaque, pokemon2);
-        pokemon2.atacar(movimientoAtaque2, pokemon);
         pokemon.atacar(movimientoEstado, pokemon2);
-        pokemon.atacar(movimientoMejora, pokemon);
+        pokemon2.atacar(movimientoEstado, pokemon);
 
         System.out.println(pokemon);
         System.out.println(pokemon2);
