@@ -17,25 +17,21 @@ public class MovimientoAtaque extends Movimiento {
 
     @Override
     public String getNombre() {
-        // TODO Auto-generated method stub
         return super.getNombre();
     }
 
     @Override
     public void setNombre(String nombre) {
-        // TODO Auto-generated method stub
         super.setNombre(nombre);
     }
 
     @Override
     public EnumMovimiento getTipoMovimiento() {
-        // TODO Auto-generated method stub
         return super.getTipoMovimiento();
     }
 
     @Override
     public void setTipoMovimiento(EnumMovimiento tipoMovimiento) {
-        // TODO Auto-generated method stub
         super.setTipoMovimiento(tipoMovimiento);
     }
 
@@ -57,48 +53,60 @@ public class MovimientoAtaque extends Movimiento {
 
     @Override
     public int getCosteEstamina() {
-        // TODO Auto-generated method stub
         return super.getCosteEstamina();
     }
 
     @Override
     public void setCosteEstamina(int costeEstamina) {
-        // TODO Auto-generated method stub
         super.setCosteEstamina(costeEstamina);
     }
 
     @Override
     public EnumTabla comparar(EnumTipos tipo1, EnumTipos tipo2) {
-        // TODO Auto-generated method stub
         return super.comparar(tipo1, tipo2);
     }
 
     @Override
     public void usarMovimiento(Pokemon pokemon1, Pokemon pokemon2) {
-        // TODO Auto-generated method stub
         int potenciaTotal = 0;
         EnumTabla comparacion = EnumTabla.NEUTRO;
 
         if (elementoMovimiento == pokemon1.getTipo()) {
+            
+            if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.VENTAJA){
 
-            potenciaTotal = (int) (pokemon1.getAtaque() * 1.5 * potencia - pokemon2.getDefensa());
+                potenciaTotal = (int) 0.01 * (int) 1.5 * (int) 1.5 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25 * pokemon2.getDefensa());
+            }
+
+            else if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.DESVENTAJA){
+
+                potenciaTotal = (int) 0.01 * (int) 1.5 * (int) 0.75 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25 * pokemon2.getDefensa());
+            }
+
+            else if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.NEUTRO){
+
+                potenciaTotal = (int) 0.01 * (int) 1.5 * (int) 1 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25 * pokemon2.getDefensa());
+            }
+
         }
 
         else if (elementoMovimiento != pokemon1.getTipo()) {
 
-            potenciaTotal = pokemon1.getAtaque() * potencia - pokemon2.getDefensa();
-        }
+            if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.VENTAJA){
 
-        comparacion = comparar(elementoMovimiento, pokemon1.getTipo());
+                potenciaTotal = (int) 0.01 * (int) 1 * (int) 1.5 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25 * pokemon2.getDefensa());
+            }
 
-        if (comparacion == EnumTabla.VENTAJA) {
+            else if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.DESVENTAJA){
 
-            potenciaTotal = potenciaTotal * 2;
-        }
+                potenciaTotal = (int) 0.01 * (int) 1 * (int) 0.75 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25 * pokemon2.getDefensa());
+            }
 
-        else if (comparacion == EnumTabla.DESVENTAJA) {
+            else if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.NEUTRO){
 
-            potenciaTotal = (int) (pokemon1.getAtaque() * 0.5 * potencia - pokemon2.getDefensa());
+                potenciaTotal = (int) 0.01 * (int) 1 * (int) 1 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25 * pokemon2.getDefensa());
+            }
+
         }
 
         pokemon1.setEstamina(pokemon1.getEstamina() - this.getCosteEstamina());
