@@ -68,50 +68,62 @@ public class MovimientoAtaque extends Movimiento {
 
     @Override
     public void usarMovimiento(Pokemon pokemon1, Pokemon pokemon2) {
-        int potenciaTotal = 0;
-        EnumTabla comparacion = EnumTabla.NEUTRO;
+        float potenciaTotal = 0;
+        EnumTabla comparacion = comparar(elementoMovimiento, pokemon2.getTipo());
 
         if (elementoMovimiento == pokemon1.getTipo()) {
-            
-            if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.VENTAJA){
 
-                potenciaTotal = (int) 0.01 * (int) 1.5 * (int) 1.5 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25 * pokemon2.getDefensa());
+            if (comparacion == EnumTabla.VENTAJA) {
+
+                potenciaTotal = (float) (0.01 * 1.5 * 1.5 * (85 + Math.random() * 100)
+                        * ((0.2 * pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25
+                                * pokemon2.getDefensa()));
             }
 
-            else if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.DESVENTAJA){
+            else if (comparacion == EnumTabla.DESVENTAJA) {
 
-                potenciaTotal = (int) 0.01 * (int) 1.5 * (int) 0.75 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25 * pokemon2.getDefensa());
+                potenciaTotal = (float) (0.01 * 1.5 * 0.75 * (85 + Math.random() * 100)
+                        * ((0.2 * pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25
+                                * pokemon2.getDefensa()));
             }
 
-            else if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.NEUTRO){
+            else if (comparacion == EnumTabla.NEUTRO) {
 
-                potenciaTotal = (int) 0.01 * (int) 1.5 * (int) 1 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25 * pokemon2.getDefensa());
+                potenciaTotal = (float) (0.01 * 1.5 * 1 * (85 + Math.random() * 100)
+                        * ((0.2 * pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25
+                                * pokemon2.getDefensa()));
             }
 
         }
 
         else if (elementoMovimiento != pokemon1.getTipo()) {
 
-            if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.VENTAJA){
+            if (comparacion == EnumTabla.VENTAJA) {
 
-                potenciaTotal = (int) 0.01 * (int) 1 * (int) 1.5 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25 * pokemon2.getDefensa());
+                potenciaTotal = (float) (0.01 * 1 * 1.5 * (85 + Math.random() * 100)
+                        * ((0.2 * pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25
+                                * pokemon2.getDefensa()));
             }
 
-            else if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.DESVENTAJA){
+            else if (comparacion == EnumTabla.DESVENTAJA) {
 
-                potenciaTotal = (int) 0.01 * (int) 1 * (int) 0.75 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25 * pokemon2.getDefensa());
+                potenciaTotal = (float) (0.01 * 1 * (int) 0.75 * (85 + Math.random() * 100)
+                        * ((0.2 * pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25
+                                * pokemon2.getDefensa()));
             }
 
-            else if(comparar(elementoMovimiento, pokemon2.getTipo()) == EnumTabla.NEUTRO){
+            else if (comparacion == EnumTabla.NEUTRO) {
 
-                potenciaTotal = (int) 0.01 * (int) 1 * (int) 1 * (int) (85 + Math.random() * 100) * (((int) 0.2 * (int) pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25 * pokemon2.getDefensa());
+                potenciaTotal = (float) (0.01 * 1 * 1 * (85 + Math.random() * 100)
+                        * ((0.2 * pokemon1.getNivel() + 1) * pokemon1.getAtaque() * getPotencia() / 25
+                                * pokemon2.getDefensa()));
             }
 
         }
 
         pokemon1.setEstamina(pokemon1.getEstamina() - this.getCosteEstamina());
 
-        pokemon2.setVitalidad(pokemon2.getVitalidad() - potenciaTotal);
+        pokemon2.setVitalidad((int) ((float) pokemon2.getVitalidad() - potenciaTotal));
     }
 
 }

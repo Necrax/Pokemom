@@ -149,7 +149,13 @@ public class Pokemon {
     }
 
     public void setEstamina(int estamina) {
+
         this.estamina = estamina;
+
+        if (estamina < 0) {
+
+            this.estamina = 0;
+        }
     }
 
     public void setFertilidad(int fertilidad) {
@@ -169,7 +175,13 @@ public class Pokemon {
     }
 
     public void setVitalidad(int vitalidad) {
+
         this.vitalidad = vitalidad;
+
+        if (this.vitalidad < 0) {
+
+            this.vitalidad = 0;
+        }
     }
 
     public void setExperiencia(int experiencia) {

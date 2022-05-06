@@ -19,6 +19,7 @@ public class Combate {
     Combate(Entrenador entrandor1param) {
 
         this.entrenador1 = entrandor1param;
+
         // TODOthis.entrenador2 = arrayEntrenadores(random);
 
         // for (int i = 0; i <= 3; i++) {

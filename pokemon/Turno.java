@@ -19,7 +19,7 @@ public class Turno {
         this.turno = turnoParam;
 
         turnoEscrito = "Turno: " + getTurno() + "\n" + pokemon1.getNombre() + " usó: " +
-                movimientoEntrenador1.getNombre() + "\n" + pokemon1.getNombre() + " usó: "
+                movimientoEntrenador1.getNombre() + "\n" + pokemon2.getNombre() + " usó: "
                 + movimientoEntrenador2.getNombre();
 
     }

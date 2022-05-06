@@ -43,6 +43,7 @@ public class MovimientoEstado extends Movimiento {
     public void usarMovimiento(Pokemon pokemon1, Pokemon pokemon2) {
 
         pokemon2.setEstado(estadoMovimiento);
+        pokemon2.setEstamina(pokemon1.getEstamina() - this.getCosteEstamina());
     }
 
 }
