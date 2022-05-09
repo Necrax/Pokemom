@@ -221,7 +221,7 @@ public class Pokemon {
 
     public void atacar(Movimiento movimiento, Pokemon pokemonRival) {
 
-        if (estamina > movimiento.getCosteEstamina()) {
+        if (estamina > movimiento.getCosteEstamina() && vitalidad > 0) {
 
             movimiento.usarMovimiento(this, pokemonRival);
         }
@@ -247,6 +247,11 @@ public class Pokemon {
     public void descansar() {
 
         estamina = estaminaMax;
+    }
+
+    public void curar() {
+
+        this.setVitalidad(vitalidadMax);
     }
 
     @Override

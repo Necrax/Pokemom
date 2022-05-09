@@ -20,9 +20,12 @@ public class Main {
         System.out.println(pokemon);
         System.out.println(pokemon2);
 
+        entrenador.entreFuncional(pokemon);
+
         pokemon.atacar(movimientoAtaque, pokemon2);
         pokemon.atacar(movimientoEstado, pokemon2);
         pokemon2.atacar(movimientoEstado, pokemon);
+        pokemon.atacar(movimientoMejora, pokemon);
 
         System.out.println(pokemon);
         System.out.println(pokemon2);
