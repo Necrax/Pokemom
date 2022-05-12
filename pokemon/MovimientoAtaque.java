@@ -111,7 +111,7 @@ public class MovimientoAtaque extends Movimiento {
 
         pokemon1.setEstamina(pokemon1.getEstamina() - this.getCosteEstamina());
 
-        pokemon2.setVitalidad(pokemon2.getVitalidad() - potenciaTotal);
+        pokemon2.setVitalidad((int) (pokemon2.getVitalidad() - potenciaTotal));
     }
     
 }
