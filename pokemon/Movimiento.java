@@ -48,7 +48,6 @@ public abstract class Movimiento {
         else if (tipo1 == EnumTipos.AGUA && tipo2 == EnumTipos.FUEGO) {
 
             comparacion = EnumTabla.VENTAJA;
-
         }
 
         else if (tipo1 == EnumTipos.FUEGO && tipo2 == EnumTipos.AGUA) {
@@ -104,6 +103,36 @@ public abstract class Movimiento {
         else if (tipo1 == EnumTipos.ELECTRICO && tipo2 == EnumTipos.VOLADOR) {
 
             comparacion = EnumTabla.VENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.BICHO && tipo2 == EnumTipos.VOLADOR) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.BICHO && tipo2 == EnumTipos.FUEGO) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.BICHO && tipo2 == EnumTipos.PLANTA) {
+
+            comparacion = EnumTabla.VENTAJA;
+        }
+        
+        else if (tipo1 == EnumTipos.PLANTA && tipo2 == EnumTipos.BICHO) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.FUEGO && tipo2 == EnumTipos.BICHO) {
+
+            comparacion = EnumTabla.VENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.VOLADOR && tipo2 == EnumTipos.BICHO) {
+
+            comparacion = EnumTabla.DESVENTAJA;
         }
 
         else {
