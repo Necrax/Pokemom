@@ -1,95 +1,145 @@
 package pokemon;
 
-public class Movimiento {
+public abstract class Movimiento {
 
     private EnumMovimiento tipoMovimiento;
-    private int potencia;
-    private EnumTipos elementoMovimiento;
-    private EnumEstados estadoMoviento;
-    private int turnos;
-    private EnumCarac mejora;
-    private int cantidadMejora;
     private int costeEstamina;
+    private String nombre;
 
-    Movimiento(EnumMovimiento tipoMovimientoParam, int potenciaParam, EnumTipos elementoMovimientoParam,
-            EnumEstados estadoMovimientoParam, int turnosParam, EnumCarac mejoraParam,
-            int cantidadMejoraParam, int costeEstaminaParam) {
+    Movimiento(String nombreParam) {
 
-        this.tipoMovimiento = tipoMovimientoParam;
-        this.potencia = potenciaParam;
-        this.elementoMovimiento = elementoMovimientoParam;
-        this.estadoMoviento = estadoMovimientoParam;
-        this.turnos = turnosParam;
-        this.mejora = mejoraParam;
-        this.cantidadMejora = cantidadMejoraParam;
-        this.costeEstamina = costeEstaminaParam;
+        this.nombre = nombreParam;
     }
 
-    public EnumMovimiento getTipoMovimiento() {
-        return tipoMovimiento;
-    }
-
-    public int getPotencia() {
-        return potencia;
-    }
-
-    public EnumTipos getElementoMovimiento() {
-        return elementoMovimiento;
-    }
-
-    public EnumEstados getEstadoMoviento() {
-        return estadoMoviento;
-    }
-
-    public int getTurnos() {
-        return turnos;
-    }
-
-    public EnumCarac getMejora() {
-        return mejora;
-    }
-
-    public int getCantidadMejora() {
-        return cantidadMejora;
+    public String getNombre() {
+        return nombre;
     }
 
     public int getCosteEstamina() {
         return costeEstamina;
     }
 
-    public void setTipoMovimiento(EnumMovimiento tipoMovimiento) {
-        this.tipoMovimiento = tipoMovimiento;
-    }
-
-    public void setPotencia(int potencia) {
-        this.potencia = potencia;
-    }
-
-    public void setElementoMovimiento(EnumTipos elementoMovimiento) {
-        this.elementoMovimiento = elementoMovimiento;
-    }
-
-    public void setEstadoMoviento(EnumEstados estadoMoviento) {
-        this.estadoMoviento = estadoMoviento;
-    }
-
-    public void setTurnos(int turnos) {
-        this.turnos = turnos;
-    }
-
-    public void setMejora(EnumCarac mejora) {
-        this.mejora = mejora;
-    }
-
-    public void setCantidadMejora(int cantidadMejora) {
-        this.cantidadMejora = cantidadMejora;
-    }
-
     public void setCosteEstamina(int costeEstamina) {
         this.costeEstamina = costeEstamina;
     }
 
-    public void usarMovimiento() {
+    public EnumMovimiento getTipoMovimiento() {
+        return tipoMovimiento;
+    }
 
+    public void setTipoMovimiento(EnumMovimiento tipoMovimiento) {
+        this.tipoMovimiento = tipoMovimiento;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public abstract void usarMovimiento(Pokemon pokemon1, Pokemon pokemon2);
+
+    public EnumTabla comparar(EnumTipos tipo1, EnumTipos tipo2) {
+        EnumTabla comparacion = EnumTabla.NEUTRO;
+
+        if (tipo1 == tipo2) {
+
+            comparacion = EnumTabla.NEUTRO;
+        }
+
+        else if (tipo1 == EnumTipos.AGUA && tipo2 == EnumTipos.FUEGO) {
+
+            comparacion = EnumTabla.VENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.FUEGO && tipo2 == EnumTipos.AGUA) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.FUEGO && tipo2 == EnumTipos.PLANTA) {
+
+            comparacion = EnumTabla.VENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.PLANTA && tipo2 == EnumTipos.FUEGO) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.AGUA && tipo2 == EnumTipos.PLANTA) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.PLANTA && tipo2 == EnumTipos.AGUA) {
+
+            comparacion = EnumTabla.VENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.ELECTRICO && tipo2 == EnumTipos.AGUA) {
+
+            comparacion = EnumTabla.VENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.AGUA && tipo2 == EnumTipos.ELECTRICO) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.VOLADOR && tipo2 == EnumTipos.PLANTA) {
+
+            comparacion = EnumTabla.VENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.PLANTA && tipo2 == EnumTipos.VOLADOR) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.VOLADOR && tipo2 == EnumTipos.ELECTRICO) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.ELECTRICO && tipo2 == EnumTipos.VOLADOR) {
+
+            comparacion = EnumTabla.VENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.BICHO && tipo2 == EnumTipos.VOLADOR) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.BICHO && tipo2 == EnumTipos.FUEGO) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.BICHO && tipo2 == EnumTipos.PLANTA) {
+
+            comparacion = EnumTabla.VENTAJA;
+        }
+        
+        else if (tipo1 == EnumTipos.PLANTA && tipo2 == EnumTipos.BICHO) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.FUEGO && tipo2 == EnumTipos.BICHO) {
+
+            comparacion = EnumTabla.VENTAJA;
+        }
+
+        else if (tipo1 == EnumTipos.VOLADOR && tipo2 == EnumTipos.BICHO) {
+
+            comparacion = EnumTabla.DESVENTAJA;
+        }
+
+        else {
+
+            comparacion = EnumTabla.NEUTRO;
+        }
+
+        return comparacion;
     }
 }

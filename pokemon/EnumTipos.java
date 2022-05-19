@@ -6,5 +6,6 @@ public enum EnumTipos {
     PLANTA,
     VOLADOR,
     ELECTRICO,
+    BICHO,
     NORMAL;
 }

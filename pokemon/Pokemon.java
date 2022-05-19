@@ -3,36 +3,40 @@ package pokemon;
 import java.util.ArrayList;
 
 public class Pokemon {
-    protected String nombre;
-    protected String mote;
-    protected int vitalidad;
-    protected int ataque;
-    protected int defensa;
-    protected int ataqueEspecial;
-    protected int defensaEspecial;
-    protected int velocidad;
-    protected int estamina;
-    protected int nivel = 0;
-    protected int fertilidad = 5;
-    protected EnumTipos tipo;
-    protected EnumEstados estado = EnumEstados.SIN_ESTADO;
-    protected int experiencia = 0;
-    protected ArrayList<Movimiento> movimientos = new ArrayList<>(4);
-    protected int contadorMovimientos;
+    private String nombre;
+    private String mote;
+    private int vitalidadMax;
+    private int vitalidad;
+    private int ataque;
+    private int defensa;
+    private int ataqueEspecial;
+    private int defensaEspecial;
+    private int velocidad;
+    private int estaminaMax;
+    private int estamina;
+    private int nivel = 1;
+    private int fertilidad = 5;
+    private EnumTipos tipo;
+    private EnumEstados estado = EnumEstados.SIN_ESTADO;
+    private int experiencia = 0;
+    private ArrayList<Movimiento> movimientos = new ArrayList<Movimiento>(4);
+    private int contadorMovimientos;
 
-    Pokemon(String nombreParam, String moteParam, int vitalidadParam, int ataqueParam,
+    Pokemon(String nombreParam, String moteParam, int vitalidadMaxParam, int ataqueParam,
             int defensaParam, int ataqueEspecialParam, int defensaEspecialParam,
-            int velocidadParam, int estaminaParam,
+            int velocidadParam, int estaminaMaxParam,
             EnumTipos tipoParam) {
         this.nombre = nombreParam;
         this.mote = moteParam;
-        this.vitalidad = vitalidadParam;
+        this.vitalidadMax = vitalidadMaxParam;
+        this.vitalidad = vitalidadMaxParam;
         this.ataque = ataqueParam;
         this.defensa = defensaParam;
         this.ataqueEspecial = ataqueEspecialParam;
         this.defensaEspecial = defensaEspecialParam;
         this.velocidad = velocidadParam;
-        this.estamina = estaminaParam;
+        this.estaminaMax = estaminaMaxParam;
+        this.estamina = estaminaMaxParam;
         this.tipo = tipoParam;
     }
 
@@ -100,6 +104,22 @@ public class Pokemon {
         return contadorMovimientos;
     }
 
+    public int getEstaminaMax() {
+        return estaminaMax;
+    }
+
+    public int getVitalidadMax() {
+        return vitalidadMax;
+    }
+
+    public void setEstaminaMax(int estaminaMax) {
+        this.estaminaMax = estaminaMax;
+    }
+
+    public void setVitalidadMax(int vitalidadMax) {
+        this.vitalidadMax = vitalidadMax;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -129,7 +149,13 @@ public class Pokemon {
     }
 
     public void setEstamina(int estamina) {
+
         this.estamina = estamina;
+
+        if (estamina < 0) {
+
+            this.estamina = 0;
+        }
     }
 
     public void setFertilidad(int fertilidad) {
@@ -149,7 +175,13 @@ public class Pokemon {
     }
 
     public void setVitalidad(int vitalidad) {
+
         this.vitalidad = vitalidad;
+
+        if (this.vitalidad < 0) {
+
+            this.vitalidad = 0;
+        }
     }
 
     public void setExperiencia(int experiencia) {
@@ -164,7 +196,7 @@ public class Pokemon {
         this.contadorMovimientos = contadorMovimientos;
     }
 
-    public void aprenderMOvimiento(Movimiento movimientoAprender) {
+    public void aprenderMovimiento(Movimiento movimientoAprender) {
 
         movimientos.add(movimientoAprender);
     }
@@ -172,6 +204,7 @@ public class Pokemon {
     public void remplazarMovimiento(Movimiento movimientoOlvidar, Movimiento movimientoAprender) {
 
         for (int i = 0; i < 3; i++) {
+
             if (movimientos.get(i) == movimientoOlvidar) {
 
                 movimientos.remove(i);
@@ -181,113 +214,18 @@ public class Pokemon {
 
     }
 
-    public EnumTabla comparar(EnumTipos tipo1, EnumTipos tipo2) {
-        EnumTabla comparacion = EnumTabla.NEUTRO;
+    public Movimiento elegirMovimiento(int i) {
 
-        if (tipo1 == tipo2) {
-
-            comparacion = EnumTabla.NEUTRO;
-        }
-
-        else if (tipo1 == EnumTipos.AGUA && tipo2 == EnumTipos.FUEGO) {
-
-            comparacion = EnumTabla.VENTAJA;
-
-        }
-
-        else if (tipo1 == EnumTipos.FUEGO && tipo2 == EnumTipos.AGUA) {
-
-            comparacion = EnumTabla.DESVENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.FUEGO && tipo2 == EnumTipos.PLANTA) {
-
-            comparacion = EnumTabla.VENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.PLANTA && tipo2 == EnumTipos.FUEGO) {
-
-            comparacion = EnumTabla.DESVENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.AGUA && tipo2 == EnumTipos.PLANTA) {
-
-            comparacion = EnumTabla.DESVENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.PLANTA && tipo2 == EnumTipos.AGUA) {
-
-            comparacion = EnumTabla.VENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.ELECTRICO && tipo2 == EnumTipos.AGUA) {
-
-            comparacion = EnumTabla.VENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.AGUA && tipo2 == EnumTipos.ELECTRICO) {
-
-            comparacion = EnumTabla.DESVENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.VOLADOR && tipo2 == EnumTipos.PLANTA) {
-
-            comparacion = EnumTabla.VENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.PLANTA && tipo2 == EnumTipos.VOLADOR) {
-
-            comparacion = EnumTabla.DESVENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.VOLADOR && tipo2 == EnumTipos.ELECTRICO) {
-
-            comparacion = EnumTabla.DESVENTAJA;
-        }
-
-        else if (tipo1 == EnumTipos.ELECTRICO && tipo2 == EnumTipos.VOLADOR) {
-
-            comparacion = EnumTabla.VENTAJA;
-        }
-
-        else {
-
-            comparacion = EnumTabla.NEUTRO;
-        }
-
-        return comparacion;
+        return movimientos.get(i);
     }
 
-    public int atacar(Movimiento movimientoAtaque, Pokemon pokemon) {
+    public void atacar(Movimiento movimiento, Pokemon pokemonRival) {
 
-        int potenciaTotal = 0;
-        EnumTabla comparacion = EnumTabla.NEUTRO;
+        if (estamina > movimiento.getCosteEstamina() && vitalidad > 0) {
 
-        if (movimientoAtaque.getElementoMovimiento() == tipo) {
-
-            potenciaTotal = (int) (ataque * 1.5 * movimientoAtaque.getPotencia() - pokemon.getDefensa());
+            movimiento.usarMovimiento(this, pokemonRival);
         }
 
-        else if (movimientoAtaque.getElementoMovimiento() != tipo) {
-
-            potenciaTotal = ataque * movimientoAtaque.getPotencia() - pokemon.getDefensa();
-        }
-
-        comparacion = comparar(movimientoAtaque.getElementoMovimiento(), pokemon.getTipo());
-
-        if (comparacion == EnumTabla.VENTAJA) {
-
-            potenciaTotal = potenciaTotal * 2;
-        }
-
-        else if (comparacion == EnumTabla.DESVENTAJA) {
-
-            potenciaTotal = (int) (ataque * 0.5 * movimientoAtaque.getPotencia() - pokemon.getDefensa());
-        }
-
-        setEstamina(estamina - movimientoAtaque.getCosteEstamina());
-
-        return potenciaTotal;
     }
 
     public void subirNivel() {
@@ -304,5 +242,21 @@ public class Pokemon {
 
         }
 
+    }
+
+    public void descansar() {
+
+        estamina = estaminaMax;
+    }
+
+    public void curar() {
+
+        this.setVitalidad(vitalidadMax);
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre:" + nombre + "\nVitalidad:" + vitalidad + "\nEstamina: " + estamina + "\nTipo: " + tipo +
+                "\nEstado: " + estado + "\nAtaque: " + ataque;
     }
 }
